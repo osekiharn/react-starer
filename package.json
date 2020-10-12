@@ -1,0 +1,21 @@
+{
+    "name": "react-starter",
+    "version": "1.0.0",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "app/*"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "app/**/!(*test).{js,ts,tsx}": [
+            "stylelint --config .stylelintrc.json \"./app/**/*.scss\" --fix",
+            "eslint --config .eslintrc.js \"./app/**/*.js\" --fix",
+            "git add"
+        ]
+    }
+}
