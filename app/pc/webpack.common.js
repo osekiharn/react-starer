@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const { merge } = require('webpack-merge');
 const base = require('../../webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const srcPath = path.resolve(__dirname, './src/js');
+const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = merge(base, {
   entry: {

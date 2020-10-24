@@ -5,13 +5,13 @@
     "rootDir": "../../",
     "baseUrl": "src/js",
     "paths": {
-      "@actions": ["actions*"],
-      "@components": ["components"],
-      "@containers": ["containers"],
-      "@reducers": ["reducers"],
-      "@sagas": ["sagas"],
-      "@store": ["store"],
-      "@utils": ["utils"]
+      "@actions*": ["actions*"],
+      "@components*": ["components*"],
+      "@containers*": ["containers*"],
+      "@reducers*": ["reducers*"],
+      "@sagas*": ["sagas*"],
+      "@store*": ["store*"],
+      "@utils*": ["utils*"]
     }
   },
   "include": [
