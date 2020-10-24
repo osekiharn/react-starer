@@ -1,37 +1,34 @@
 const path = require('path');
+const webpack = require('webpack')
 const { merge } = require('webpack-merge');
 const base = require('../../webpack.base');
-const srcPath = path.resolve(__dirname, './src/js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const srcPath = path.resolve(__dirname, './src/js');
 
 module.exports = merge(base, {
-    entry: {
-        app: './src/js/index.tsx',
+  entry: {
+    app: './src/js/index.tsx',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {}
+    })
+  ],
+  resolve: {
+    alias: {
+      '@actions': `${srcPath}/js/actions`,
+      '@components': `${srcPath}/js/components`,
+      '@constants': `${srcPath}/js/constants`,
+      '@containers': `${srcPath}/js/containers`,
+      '@reducers': `${srcPath}/js/reducers`,
+      '@sagas': `${srcPath}/js/sagas`,
+      '@store': `${srcPath}/js/store`,
+      '@utils': `${srcPath}/js/utils`,
+      '@css': `${srcPath}/css`,
     },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js',
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './src/index.html',
-        }),
-        new MiniCssExtractPlugin({
-            filename: './sytle.[contenthash].css',
-            ignoreOrder: true,
-        }),
-    ],
-    resolve: {
-        alias: {
-            '@actions': path.resolve(__dirname, 'src/js/actions'),
-            '@components': path.resolve(__dirname, 'src/js/components'),
-            '@containers': path.resolve(__dirname, 'src/js/containers'),
-            '@reducers': path.resolve(__dirname, 'src/js/reducers'),
-            '@sagas': path.resolve(__dirname, 'src/js/sagas'),
-            '@store': path.resolve(__dirname, 'src/js/store'),
-            '@utils': path.resolve(__dirname, 'src/js/utils'),
-        },
-    },
+  },
 });

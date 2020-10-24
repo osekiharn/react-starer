@@ -1,21 +1,25 @@
 {
-    "name": "react-starter",
-    "version": "1.0.0",
-    "license": "MIT",
-    "private": true,
-    "workspaces": [
-        "app/*"
-    ],
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "app/**/!(*test).{js,ts,tsx}": [
-            "stylelint --config .stylelintrc.json \"./app/**/*.scss\" --fix",
-            "eslint --config .eslintrc.js \"./app/**/*.js\" --fix",
-            "git add"
-        ]
+  "name": "react-starter",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "eslint": "eslint --config .eslintrc.js \"./**/*.{ts,tsx,jsx,js}\" --fix",
+    "prettier": "prettier --config .prettierrc.json  \"./**/*.{ts,tsx,jsx,js}\" --write"
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "app/**/!(*test).{js,ts,tsx}": [
+      "stylelint --config .stylelintrc.json \"./app/**/*.scss\" --fix",
+      "eslint --config .eslintrc.js \"./app/**/*.{ts,tsx,jsx,js}\" --fix",
+      "git add"
+    ]
+  }
 }
